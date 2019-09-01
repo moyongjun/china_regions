@@ -32,6 +32,9 @@ on t.country_id=co.country_id
 
 select p.*,c.* from province p
 left join city c
-on p.province_id=c.province_id
+on p.province_id=c.province_id;
+
+-- 具体需求具体分析
+
 
 
