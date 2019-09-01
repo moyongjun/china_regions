@@ -1,0 +1,37 @@
+select count(1) from village;
+select * from village where name like '%多福巷社区居委会%' and town_id=110101001000;
+select * from town where name like '%内官%';
+
+select p.name provinceOrzhixia,
+case
+c.name when '市辖区' then CONCAT(p.name,'(市辖区)') else c.name end cityName ,co.name countryName,t.name townname from province p
+left join city c
+on p.province_id=c.province_id
+left join country co
+on co.city_id=c.city_id
+left join town t
+on t.country_id=co.country_id
+
+limit 1000;
+
+
+-- 统计
+select count(1) from
+(
+select p.name provinceOrzhixia,
+case
+c.name when '市辖区' then CONCAT(p.name,'(市辖区)') else c.name end cityName ,co.name countryName,t.name townname from province p
+left join city c
+on p.province_id=c.province_id
+left join country co
+on co.city_id=c.city_id
+left join town t
+on t.country_id=co.country_id
+) res
+
+
+select p.*,c.* from province p
+left join city c
+on p.province_id=c.province_id
+
+
